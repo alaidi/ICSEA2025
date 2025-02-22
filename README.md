@@ -1,11 +1,11 @@
-# AI-PE Conference 2024 Website
+# ICSEA2025 Conference Website
 
 ## Overview
-The official website for the AI-PE Conference 2024, focusing on Artificial Intelligence applications in Petroleum Engineering. This website is built using modern web technologies and provides a bilingual experience in English and Arabic.
+The official website for the First International Conference on Sustainable Engineering and Computer Science Applications (ICSEA2025). This website is built using modern web technologies and provides a bilingual experience in English and Arabic.
 
 ## Features
 - 🌐 Bilingual Support (English/Arabic)
-- 🌙 Dark Mode
+- 🌙 Dark Mode Support
 - ⏱️ Conference Countdown Timer
 - 📱 Responsive Design
 - 🎯 Interactive Topics Section
@@ -13,6 +13,8 @@ The official website for the AI-PE Conference 2024, focusing on Artificial Intel
 - 📝 Registration System
 - 📅 Schedule Display
 - 🔍 SEO Optimized
+- 📄 Dynamic Content Loading
+- 🔄 RTL/LTR Layout Support
 
 ## Technologies Used
 - HTML5
@@ -20,31 +22,46 @@ The official website for the AI-PE Conference 2024, focusing on Artificial Intel
 - JavaScript
 - Alpine.js
 - Vite
+- Tailwind RTL Plugin
+- PostCSS
 
-## Project Structure 
-ai-pe-conference/
+## Project Structure
+```
+icsea2025-conference/
 ├── src/
-│ ├── components/
-│ │ ├── Hero/
-│ │ ├── Topics/
-│ │ ├── Countdown/
-│ │ ├── FAQ/
-│ │ └── ...
-│ ├── utils/
-│ │ ├── language.js
-│ │ ├── alpineMixins.js
-│ │ └── componentLoader.js
-│ ├── styles/
-│ │ └── buttons.css
-│ └── main.js
+│   ├── components/
+│   │   ├── About/
+│   │   ├── Committees/
+│   │   ├── Countdown/
+│   │   ├── FAQ/
+│   │   ├── Footer/
+│   │   ├── Header/
+│   │   ├── Hero/
+│   │   ├── Publications/
+│   │   ├── Schedule/
+│   │   ├── Speakers/
+│   │   ├── Topics/
+│   │   └── Workshops/
+│   ├── utils/
+│   │   ├── componentLoader.js
+│   │   └── language.js
+│   ├── translations/
+│   │   └── index.js
+│   ├── styles/
+│   │   └── main.css
+│   └── main.js
 ├── public/
-│ ├── images/
-│ └── favicon/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── icons/
+│   └── site.webmanifest
 ├── index.html
+├── committees.html
 ├── package.json
 ├── tailwind.config.js
 ├── vite.config.js
 └── README.md
+```
 
 ## Getting Started
 
@@ -54,30 +71,70 @@ ai-pe-conference/
 
 ### Installation
 1. Clone the repository
+```bash
+git clone https://github.com/your-username/icsea2025-conference.git
+cd icsea2025-conference
+```
 
-``` 
+2. Install dependencies
+```bash
 npm install
+```
+
+3. Start development server
+```bash
 npm run dev
 ```
 
+4. Build for production
+```bash
+npm run build
+```
 
+5. Preview production build
+```bash
+npm run preview
+```
 
-## Development
+## Development Guidelines
 
 ### Adding New Components
 1. Create a new directory in `src/components/`
-2. Add `index.js` and `index.html` files
-3. Register the component in `main.js`
+2. Add component files:
+   - `index.js` - Component logic
+   - `index.html` - Component template
+3. Register the component in `src/main.js`
 
-### Styling
+### Styling Guidelines
 - Use Tailwind CSS utility classes
-- Custom styles in `src/styles/`
-- Follow the established design system
+- Custom styles should be added to `src/styles/`
+- Follow the established color scheme and design system
+- Ensure RTL support for Arabic layout
 
-### Translations
-- Add new translations in both English and Arabic
-- Use the language utility functions
-- Test RTL layout for Arabic
+### Translation Guidelines
+1. Add new translations in `src/translations/index.js`
+2. Include both English and Arabic versions
+3. Use the translation system in components:
+```javascript
+x-text="currentLang === 'ar' ? 'Arabic Text' : 'English Text'"
+```
+
+### Component Structure
+```javascript
+export const initComponent = () => ({
+    content: '',
+    async init() {
+        this.content = await loadComponentContent('ComponentName');
+    }
+});
+```
+
+## Deployment
+The website uses GitHub Pages for deployment. To deploy:
+
+```bash
+npm run deploy
+```
 
 ## Contributing
 1. Fork the repository
@@ -86,15 +143,12 @@ npm run dev
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Contact
-- Website: [alaidi.net](https://alaidi.net)
-- Email: alaidi@uowasit.edu.iq
-- Twitter: [@yourhandle](https://twitter.com/aboulheja)
+- Website: [alayen.edu.iq](https://alayen.edu.iq)
+- Email: info@alayen.edu.iq
 
 ## Acknowledgments
 - [Tailwind CSS](https://tailwindcss.com)
