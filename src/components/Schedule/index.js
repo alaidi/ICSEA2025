@@ -10,8 +10,7 @@ export const initSchedule = () => ({
                     time: '9:00 - 9:30 AM',
                     items: [
                         'Registration and reception of participants',
-                        'Welcome speech by the President of Al-Ain University',
-                        'Opening address by the Dean of the College of Petroleum Engineering',
+                        'Welcome speech by the President of University of Engineering and Technology',
                         'Presentation of conference objectives and themes'
                     ]
                 },
@@ -19,20 +18,20 @@ export const initSchedule = () => ({
                     time: '9:30 - 11:30 AM',
                     speakers: [
                         {
-                            name: 'Professor Kamaruzzaman Bin Sopin',
-                            topic: 'Artificial Intelligence for Energy Optimization in the Petroleum Industry'
+                            name: 'Professor ',
+                            topic: 'Artificial Intelligence for Energy Optimization in the Industry'
                         },
                         {
-                            name: 'Professor Ahmed Al-Amiery', 
-                            topic: 'Corrosion Prediction and Prevention Using AI: Advancing Maintenance Strategies in Oil Infrastructure'
+                            name: 'Professor ',
+                            topic: 'Corrosion Prediction and Prevention Using AI: Advancing Maintenance Strategies in Infrastructure'
                         }
                     ]
                 },
                 sessionOne: {
                     time: '11:30 AM - 1:00 PM',
-                    theme: 'The Role of AI in Improving Oil Exploration and Production',
+                    theme: 'The Role of AI in Improving Industry',
                     items: [
-                        'Case Study: AI Applications in Enhancing Drilling Models',
+                        'Case Study: AI Applications in Enhancing Drilling Models in Industry',
                         'Open Discussion (20 minutes)'
                     ]
                 },
@@ -41,14 +40,14 @@ export const initSchedule = () => ({
                 },
                 sessionTwo: {
                     time: '2:30 - 4:00 PM',
-                    theme: 'AI in Corrosion Management and Equipment Longevity',
+                    theme: 'AI in Digital Corrosion Mitigation',
                     items: [
-                        'Research Paper: Techniques for Smart Corrosion Mitigation'
+                        'Research Paper: Techniques for Digital Corrosion Mitigation'
                     ]
                 },
                 workshop: {
                     time: '4:30 - 6:00 PM',
-                    title: 'AI in Oil and Gas Field Management'
+                    title: 'AI in Innovative Industry'
                 }
             },
             dayTwo: {
@@ -56,16 +55,16 @@ export const initSchedule = () => ({
                     time: '9:00 - 11:00 AM',
                     speakers: [
                         {
-                            name: 'Dr. Ebrahim Mohmoudi',
-                            topic: 'AI Applications in Polymers for Petroleum Engineering: A Game-Changer for Materials Innovation'
+                            name: 'Dr. ',
+                            topic: 'AI Applications in Software development'
                         }
                     ]
                 },
                 sessionThree: {
                     time: '11:00 AM - 1:00 PM',
-                    theme: 'Digital Transformation and Environmental Sustainability',
+                    theme: 'Digital Innovation in Industry',
                     items: [
-                        'Research Paper: AI for Carbon Emission Reduction in Oil Facilities'
+                        'Research Paper: AI in Industry'
                     ]
                 },
                 lunchBreak: {
@@ -80,7 +79,7 @@ export const initSchedule = () => ({
                 },
                 workshop: {
                     time: '4:30 - 6:00 PM',
-                    title: 'Future Innovations in Smart Field Management'
+                    title: 'Future Innovations in Smart Industry'
                 },
                 conclusion: {
                     time: '6:00 PM',
@@ -97,8 +96,8 @@ export const initSchedule = () => ({
                     time: '٩:٠٠ - ٩:٣٠ صباحاً',
                     items: [
                         'تسجيل واستقبال المشاركين',
-                        'كلمة ترحيبية من رئيس جامعة العين',
-                        'كلمة افتتاحية من عميد كلية هندسة البترول',
+                        'كلمة ترحيبية من رئيس جامعة العلوم والتكنولوجيا',
+                        'كلمة افتتاحية من عميد كلية هندسة',
                         'عرض أهداف ومحاور المؤتمر'
                     ]
                 },
@@ -106,20 +105,20 @@ export const initSchedule = () => ({
                     time: '٩:٣٠ - ١١:٣٠ صباحاً',
                     speakers: [
                         {
-                            name: 'البروفيسور كمارالزمان بن سوبين',
-                            topic: 'الذكاء الاصطناعي لتحسين الطاقة في صناعة البترول'
+                            name: 'البروفيسور ',
+                            topic: 'الذكاء الاصطناعي لتحسين الطاقة في صناعة'
                         },
                         {
-                            name: 'البروفيسور أحمد العامري',
-                            topic: 'التنبؤ بالتآكل والوقاية منه باستخدام الذكاء الاصطناعي: تطوير استراتيجيات الصيانة في البنية التحتية النفطية'
+                            name: 'البروفيسور ',
+                            topic: 'التنبؤ بالتآكل والوقاية منه باستخدام الذكاء الاصطناعي: تطوير استراتيجيات الصيانة في البنية التحتية'
                         }
                     ]
                 },
                 sessionOne: {
                     time: '١١:٣٠ صباحاً - ١:٠٠ مساءً',
-                    theme: 'دور الذكاء الاصطناعي في تحسين استكشاف وإنتاج النفط',
+                    theme: 'دور الذكاء الاصطناعي في تحسين صناعة',
                     items: [
-                        'دراسة حالة: تطبيقات الذكاء الاصطناعي في تحسين نماذج الحفر',
+                        'دراسة حالة: تطبيقات الذكاء الاصطناعي في تحسين نماذج الحفر في صناعة',
                         'نقاش مفتوح (٢٠ دقيقة)'
                     ]
                 },
@@ -128,14 +127,14 @@ export const initSchedule = () => ({
                 },
                 sessionTwo: {
                     time: '٢:٣٠ - ٤:٠٠ مساءً',
-                    theme: 'الذكاء الاصطناعي في إدارة التآكل وعمر المعدات',
+                    theme: 'الذكاء الاصطناعي في إدارة التآكل وعمر المعدات الصناعية',
                     items: [
-                        'ورقة بحثية: تقنيات التخفيف الذكي من التآكل'
+                        'ورقة بحثية: تقنيات التخفيف الذكي من التآكل في صناعة'
                     ]
                 },
                 workshop: {
                     time: '٤:٣٠ - ٦:٠٠ مساءً',
-                    title: 'الذكاء الاصطناعي في إدارة حقول النفط والغاز'
+                    title: 'الذكاء الاصطناعي في صناعة'
                 }
             },
             dayTwo: {
@@ -143,16 +142,16 @@ export const initSchedule = () => ({
                     time: '٩:٠٠ - ١١:٠٠ صباحاً',
                     speakers: [
                         {
-                            name: 'الدكتور إبراهيم محمودي',
-                            topic: 'تطبيقات الذكاء الاصطناعي في البوليمرات لهندسة البترول: نقلة نوعية في ابتكار المواد'
+                            name: 'الدكتور ',
+                            topic: 'تطبيقات الذكاء الاصطناعي في تطوير البرمجيات'
                         }
                     ]
                 },
                 sessionThree: {
                     time: '١١:٠٠ صباحاً - ١:٠٠ مساءً',
-                    theme: 'التحول الرقمي والاستدامة البيئية',
+                    theme: 'الابتكار الرقمي في صناعة',
                     items: [
-                        'ورقة بحثية: الذكاء الاصطناعي لتقليل انبعاثات الكربون في المنشآت النفطية'
+                        'ورقة بحثية: الذكاء الاصطناعي في صناعة'
                     ]
                 },
                 lunchBreak: {
@@ -167,7 +166,7 @@ export const initSchedule = () => ({
                 },
                 workshop: {
                     time: '٤:٣٠ - ٦:٠٠ مساءً',
-                    title: 'الابتكارات المستقبلية في إدارة الحقول الذكية'
+                    title: 'الابتكارات المستقبلية في صناعة'
                 },
                 conclusion: {
                     time: '٦:٠٠ مساءً',

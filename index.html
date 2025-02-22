@@ -14,15 +14,15 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://icsea2025.alayen.edu.iq/">
+    <meta property="og:url" content="https://icsea2025.istikshaf.org/">
     <meta property="og:title" content="ICSEA2025 | First International Conference on Sustainable Engineering and Computer Science Applications">
     <meta property="og:description"
         content="The conference highlights the latest innovations in sustainable engineering and computer science applications...">
-    <meta property="og:image" content="https://icsea2025.alayen.edu.iq/images/alayen.png">
+    <meta property="og:image" content="https://icsea2025.istikshaf.org/images/alayen.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://icsea2025.alayen.edu.iq/">
+    <meta property="twitter:url" content="https://icsea2025.istikshaf.org/">
     <meta property="twitter:title" content="ICSEA2025 | First International Conference on Sustainable Engineering and Computer Science Applications">
     <meta property="twitter:description"
         content="The conference highlights the latest innovations in sustainable engineering and computer science applications...">
@@ -37,7 +37,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://icsea2025.alayen.edu.iq/">
+    <link rel="canonical" href="https://icsea2025.istikshaf.org/">
 
     <!-- Additional Meta Tags -->
     <meta name="robots" content="index, follow">
@@ -57,21 +57,17 @@
                 <div class="flex items-center justify-between h-20" :class="currentLang === 'ar' ? '' : ''">
                     <!-- Logo and Title -->
                     <div class="flex items-center gap-3" :class="currentLang === 'ar' ? '' : ''">
-                        <img src="/public/assets/icons/logo.svg" alt="AI-PE Conference Logo"
+                        <img src="/public/assets/icons/logo.svg" alt="ICSEA2025 Conference Logo"
                             class="object-contain w-12 h-12">
                         <div class="font-bold text-blue-900 dark:text-gray-300"
                             :class="currentLang === 'ar' ? 'text-right' : 'text-left'">
                             <a href="/">
-                            <div x-show="currentLang === 'ar'" class="flex flex-col">
+                            <div  class="flex flex-col">
                                 <span class="block truncate">
                                     ICSEA2025
                                 </span>
                             </div>
-                            <div x-show="currentLang === 'en'" class="flex flex-col">
-                                <span class="block truncate">
-                                    ICSEA2025
-                                </span>
-                            </div>
+
                             </a>
                         </div>
                     </div>
@@ -100,9 +96,9 @@
                             <a href="#schedule" class="nav-link">
                                 <span x-text="currentLang === 'ar' ? 'الجدول' : 'Schedule'"></span>
                             </a>
-                            <a href="#publications" class="nav-link">
+                            <!-- <a href="#publications" class="nav-link">
                                 <span x-text="currentLang === 'ar' ? 'النشرات' : 'Publications'"></span>
-                            </a>
+                            </a> -->
                             <!-- Schedule -->
                             <a href="#registration"
                                 class="px-4 py-2 text-white transition-colors duration-300 bg-blue-600 rounded-full hover:bg-blue-700">
@@ -210,20 +206,20 @@
         x-data="initHero()">
         <div class="container px-4 mx-auto">
             <div class="max-w-3xl mx-auto text-center text-white" :dir="currentLang === 'ar' ? 'rtl' : 'ltr'">
-                <h1 class="mb-6 text-2xl font-bold md:text-4xl animate-[slideInDown_0.5s_ease-out]">
+                <h1 class="mb-4 text-2xl font-bold leading-tight text-white md:text-4xl animate-[fadeInUp_0.5s_ease-out]">
                     <span x-show="currentLang === 'ar'">
-                        المؤتمر العلمي الأول لكلية هندسة البترول - جامعة العين العراقية (SCPEC-2025)
+                        المؤتمر الدولي الأول للهندسة المستدامة وتطبيقات علوم الحاسوب
                     </span>
                     <span x-show="currentLang === 'en'">
-                        The First Scientific Conference of the College of Petroleum Engineering - AUIQ (SCPEC-2025)
+                        First International Conference on Sustainable Engineering and Computer Science Applications
                     </span>
                 </h1>
                 <p class="mb-8 text-xl text-blue-100 md:text-2xl animate-[fadeInUp_0.7s_ease-out]">
                     <span x-show="currentLang === 'ar'">
-                        تطوير هندسة البترول من خلال الذكاء الاصطناعي
+                        تطوير حلول مستدامة للمستقبل
                     </span>
                     <span x-show="currentLang === 'en'">
-                        AI-Driven Innovations in Petroleum Engineering: Pioneering the Future of Energy
+                        Advancing Sustainable Solutions for the Future
                     </span>
                 </p>
 
@@ -279,7 +275,7 @@
     </section>
 
     <!-- About Conference Section -->
-    <div x-data="about" x-init="init()" x-html="content"></div>
+    <div id="details" x-data="about" x-init="init()" x-html="content"></div>
 
 
     <!-- Schedule Section -->
@@ -634,8 +630,7 @@
         </div>
     </section>
     <!-- Publications Section -->
-    <section id="publications" x-data="publications" x-init="init()" class="relative py-20 overflow-hidden bg-gray-two">
-        <!-- Decorative Elements -->
+    <!-- <section id="publications" x-data="publications" x-init="init()" class="relative py-20 overflow-hidden bg-gray-two">
         <div class="absolute top-0 left-0 w-64 h-64 opacity-10">
             <div class="w-full h-full bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
         </div>
@@ -703,24 +698,24 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Footer -->
     <footer class="py-12 text-white bg-gray-900" x-data="initFooter()">
         <div class="container px-4 mx-auto">
             <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
                 <!-- Contact Info -->
                 <div>
-                    <img src="/public/assets/images/aleyn_200.png" alt="Footer Logo" class="" />
+                    <!-- <img src="/public/assets/images/aleyn_200.png" alt="Footer Logo" class="" /> -->
                 </div>
                 <div>
                     <h3 class="mb-4 text-xl font-bold" x-text="currentLang === 'ar' ? 'اتصل بنا' : 'Contact Us'">Contact
                         Us</h3>
                     <ul class="space-y-2">
-                        <li>Email: info@alayen.edu.iq</li>
+                        <li>Email: info@icsea2025.istikshaf.org</li>
                         <li>Phone: +</li>
                         <li
-                            x-text="currentLang === 'ar' ? 'العنوان: جامعة العين، العراق' : 'Address: University of Al-Ain, Iraq'">
-                            Address: University of Al-Ain, Iraq</li>
+                            x-text="currentLang === 'ar' ? 'العنوان: ، العراق' : 'Address: University, Iraq'">
+                            Address: University, Iraq</li>
                     </ul>
                 </div>
                 <!-- Quick Links -->
@@ -771,7 +766,7 @@
             </div>
             <div class="pt-8 mt-8 text-center border-t border-gray-800">
                 <p
-                    x-text="currentLang === 'ar' ? '&copy; 2025 مؤتمر الذكاء الاصطناعي في هندسة البترول' : '&copy; 2025 AI-PE Conference. All rights reserved.'">
+                    x-text="currentLang === 'ar' ? '&copy; 2025    المؤتمر الدولي الأول للهندسة المستدامة وتطبيقات علوم الحاسوب' : '&copy; 2025 ICSEA2025 Conference. All rights reserved.'">
                 </p>
             </div>
         </div>

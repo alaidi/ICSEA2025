@@ -14,11 +14,11 @@ export function initChat() {
         init() {
             // Load chat history from localStorage
             this.chatHistory = JSON.parse(localStorage.getItem('chatHistory') || '[]')
-            
+
             // Initial greeting message
             this.messages = [{
                 id: 1,
-                text: 'Hello! How can I help you with the AI-PE Conference?',
+                text: 'Hello! How can I help you with the ICSEA2025 Conference?',
                 sender: 'bot',
                 timestamp: new Date()
             }]
@@ -50,7 +50,7 @@ export function initChat() {
 
         async sendMessage() {
             if (!this.newMessage.trim()) return
-            
+
             if (!this.userInfo.submitted) {
                 if (!await this.submitUserInfo()) {
                     return
@@ -99,7 +99,7 @@ export function initChat() {
             }
 
             message = message.toLowerCase()
-            
+
             for (const [topic, words] of Object.entries(keywords)) {
                 if (words.some(word => message.includes(word))) {
                     return this.getTopicResponse(topic)
@@ -114,7 +114,7 @@ export function initChat() {
                 registration: 'You can register for the conference through our online portal. Early bird registration is available until [date]. Would you like me to guide you through the process?',
                 schedule: 'The conference is scheduled for [dates]. We have two tracks running simultaneously. Would you like to see the detailed schedule?',
                 papers: 'Paper submissions are open until [date]. All papers should follow the IEEE format and will be published in a Scopus-indexed journal. Would you like the submission guidelines?',
-                venue: 'The conference will be held at the University of Al-Ain, Iraq. We also offer virtual attendance options. Would you like directions to the venue?',
+                venue: 'The conference will be held at the University, Iraq. We also offer virtual attendance options. Would you like directions to the venue?',
                 fees: 'The registration fees are: Regular: $XXX, Student: $XXX, Virtual Attendance: $XXX. Early bird discounts are available until [date].'
             }
             return responses[topic]
@@ -144,10 +144,10 @@ export function initChat() {
         },
 
         formatTime(date) {
-            return new Date(date).toLocaleTimeString([], { 
-                hour: '2-digit', 
-                minute: '2-digit' 
+            return new Date(date).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit'
             })
         }
     }
-} 
+}

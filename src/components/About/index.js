@@ -6,24 +6,24 @@ export const initAbout = () => ({
         en: {
             title: 'About the Conference',
             paragraphs: [
-                'The conference highlights the latest innovations and advanced AI-driven technologies in the field of petroleum engineering. It aims to explore the role of artificial intelligence in enhancing drilling, extraction, and field management operations, improving equipment efficiency, and extending their lifespan.',
-                'Furthermore, it seeks to discuss opportunities and challenges in integrating artificial intelligence with traditional oil and gas industries, achieving energy sustainability, and enhancing operational efficiency.'
+                'The First International Conference on Sustainable Engineering and Computer Science Applications (ICSECSA 2025) focuses on cutting-edge research and technological advancements in engineering and computer sciences. The conference aims to explore sustainable solutions, artificial intelligence applications, and emerging innovations that contribute to the development of smart and efficient systems.',
+                'This event will provide a platform for researchers, academics, and industry professionals to discuss the latest trends, challenges, and opportunities in sustainable engineering, AI-driven solutions, and computational sciences, fostering interdisciplinary collaboration and knowledge exchange.'
             ]
         },
         ar: {
             title: 'عن المؤتمر',
             paragraphs: [
-                'يسلط المؤتمر الضوء على أحدث الابتكارات والتقنيات المتقدمة المدعومة بالذكاء الاصطناعي في مجال هندسة البترول. يهدف إلى استكشاف دور الذكاء الاصطناعي في تعزيز عمليات الحفر والاستخراج وإدارة الحقول، وتحسين كفاءة المعدات، وإطالة عمرها.',
-                'علاوة على ذلك، يسعى إلى مناقشة الفرص والتحديات في دمج الذكاء الاصطناعي مع صناعات النفط والغاز التقليدية، وتحقيق استدامة الطاقة، وتعزيز الكفاءة التشغيلية.'
+                'يركز المؤتمر الدولي الأول لتطبيقات الهندسة المستدامة وعلوم الحاسوب (ICSECSA 2025) على أحدث الأبحاث والتطورات التكنولوجية في مجالات الهندسة وعلوم الحاسوب. يهدف المؤتمر إلى استكشاف الحلول المستدامة، وتطبيقات الذكاء الاصطناعي، والابتكارات الناشئة التي تسهم في تطوير أنظمة ذكية وفعالة.',
+                'سيكون هذا الحدث منصة للباحثين والأكاديميين والمتخصصين في الصناعة لمناقشة أحدث الاتجاهات والتحديات والفرص في الهندسة المستدامة، والحلول المدعومة بالذكاء الاصطناعي، وعلوم الحوسبة، وتعزيز التعاون متعدد التخصصات وتبادل المعرفة.'
             ]
         }
     },
-    
+
     get currentLang() {
-        return getCurrentLang()
+        return getCurrentLang();
     },
 
     async init() {
         this.content = await loadComponentContent('About');
     }
-}); 
+});

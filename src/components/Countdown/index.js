@@ -3,20 +3,20 @@ import { loadComponentContent, getCurrentLang } from '../componentLoader';
 export function initCountdown() {
     return {
         content: '',
-       
+
         days: '00',
         hours: '00',
         minutes: '00',
         seconds: '00',
-        conferenceDate: new Date('2025-04-22T00:00:00'),
-        
+        conferenceDate: new Date('2025-11-22T00:00:00'),
+
         async init() {
             this.content = await loadComponentContent('Countdown');
 
             this.updateCountdown()
             setInterval(() => this.updateCountdown(), 1000)
         },
-        
+
         updateCountdown() {
             const now = new Date()
             const difference = this.conferenceDate - now
@@ -37,6 +37,6 @@ export function initCountdown() {
         get currentLang() {
             return getCurrentLang()
         }
-      
+
     }
-} 
+}

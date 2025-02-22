@@ -147,8 +147,8 @@ npm run deploy
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Contact
-- Website: [alayen.edu.iq](https://alayen.edu.iq)
-- Email: info@alayen.edu.iq
+- Website: [icsea2025.istikshaf.org](https://icsea2025.istikshaf.org)
+- Email: info@icsea2025.istikshaf.org
 
 ## Acknowledgments
 - [Tailwind CSS](https://tailwindcss.com)
