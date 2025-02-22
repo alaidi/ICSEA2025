@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Petroleum Engineering Conference</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        // Dark mode functionality
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
+        }
+        .section-fade {
+            background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        }
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md fixed w-full z-50 border-b border-gray-100" x-data="{ isOpen: false }">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="font-bold text-xl text-blue-900">ICSEA2025</a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-6">
+                        <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">Home</a>
+                        <a href="#details" class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">Details</a>
+                        <a href="#topics" class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">Topics</a>
+                        <a href="#workshops" class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">Workshops</a>
+                        <a href="#registration" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300">Register Now</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click="isOpen = !isOpen" class="p-2 rounded-md text-gray-700 hover:text-blue-600">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path :class="{'hidden': isOpen, 'inline-flex': !isOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{'hidden': !isOpen, 'inline-flex': isOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden" x-show="isOpen" @click.away="isOpen = false"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 transform -translate-y-2"
+             x-transition:enter-end="opacity-100 transform translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 transform translate-y-0"
+             x-transition:leave-end="opacity-0 transform -translate-y-2">
+            <div class="px-4 pt-2 pb-3 space-y-1 bg-white border-b border-gray-100">
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300">Home</a>
+                <a href="#details" class="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300">Details</a>
+                <a href="#topics" class="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300">Topics</a>
+                <a href="#workshops" class="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300">Workshops</a>
+                <a href="#registration" class="block px-3 py-2 text-blue-600 font-medium">Register Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="fixed top-24 right-4 z-50 flex flex-col gap-3">
+        <!-- Language Switcher -->
+        <div class="bg-white dark:bg-gray-800 rounded-full shadow-lg p-2">
+            <select class="bg-transparent text-gray-700 dark:text-white text-sm focus:outline-none">
+                <option value="en">EN</option>
+                <option value="ar">عربي</option>
+            </select>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <button id="darkModeToggle" class="bg-white dark:bg-gray-800 rounded-full shadow-lg p-3">
+            <!-- Sun icon -->
+            <svg class="w-6 h-6 text-gray-700 dark:text-yellow-300 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon icon -->
+            <svg class="w-6 h-6 text-gray-700 dark:text-white block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="gradient-bg pt-32 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 section-fade"></div>
+        <div class="container mx-auto px-4 relative">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">First International Conference on Sustainable Engineering and Computer Science Applications</h1>
+                <h2 class="text-2xl md:text-3xl text-blue-100 mb-8">Advancing Sustainable Solutions</h2>
+                <p class="text-xl text-blue-100 mb-12">Organized by University of Al-Ain, College of Engineering</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#registration" class="bg-white text-blue-900 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors duration-300">Register Now</a>
+                    <a href="#details" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors duration-300">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="bg-white dark:bg-gray-800 py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Conference Starts In</h3>
+                <div class="flex justify-center gap-4" x-data="countdown()" x-init="init()">
+                    <div class="bg-blue-600 rounded-lg p-4 w-24">
+                        <div class="text-3xl font-bold text-white" x-text="days">00</div>
+                        <div class="text-sm text-blue-100">Days</div>
+                    </div>
+                    <div class="bg-blue-600 rounded-lg p-4 w-24">
+                        <div class="text-3xl font-bold text-white" x-text="hours">00</div>
+                        <div class="text-sm text-blue-100">Hours</div>
+                    </div>
+                    <div class="bg-blue-600 rounded-lg p-4 w-24">
+                        <div class="text-3xl font-bold text-white" x-text="minutes">00</div>
+                        <div class="text-sm text-blue-100">Minutes</div>
+                    </div>
+                    <div class="bg-blue-600 rounded-lg p-4 w-24">
+                        <div class="text-3xl font-bold text-white" x-text="seconds">00</div>
+                        <div class="text-sm text-blue-100">Seconds</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keynote Speakers Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Keynote Speakers</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Speaker 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x400" alt="Speaker 1" class="w-full h-64 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                            <h3 class="text-white text-xl font-bold">Dr. Sarah Johnson</h3>
+                            <p class="text-blue-200">AI Research Director, PetroTech</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Expert in AI applications for oil exploration and production optimization.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-700 dark:text-blue-400">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"/></svg>
+                            </a>
+                            <a href="#" class="text-blue-600 hover:text-blue-700 dark:text-blue-400">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more speaker cards following the same pattern -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Schedule Section -->
+    <section class="py-16 bg-white dark:bg-gray-800" x-data="{ activeDay: 'day1' }">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Conference Schedule</h2>
+
+            <!-- Day Selector -->
+            <div class="flex justify-center space-x-4 mb-8">
+                <button
+                    @click="activeDay = 'day1'"
+                    :class="{'bg-blue-600 text-white': activeDay === 'day1', 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300': activeDay !== 'day1'}"
+                    class="px-6 py-2 rounded-full font-medium transition-colors duration-300">
+                    Day 1
+                </button>
+                <button
+                    @click="activeDay = 'day2'"
+                    :class="{'bg-blue-600 text-white': activeDay === 'day2', 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300': activeDay !== 'day2'}"
+                    class="px-6 py-2 rounded-full font-medium transition-colors duration-300">
+                    Day 2
+                </button>
+            </div>
+
+            <!-- Schedule Content -->
+            <div class="max-w-4xl mx-auto">
+                <!-- Day 1 Schedule -->
+                <div x-show="activeDay === 'day1'" class="space-y-4">
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 flex gap-6">
+                        <div class="w-32 flex-shrink-0">
+                            <div class="text-lg font-bold text-blue-600 dark:text-blue-400">09:00 AM</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">1 hour</div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Opening Ceremony</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mt-2">Welcome address and introduction to the conference themes.</p>
+                            <div class="mt-3 flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                Main Auditorium
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more schedule items -->
+                </div>
+
+                <!-- Day 2 Schedule -->
+                <div x-show="activeDay === 'day2'" class="space-y-4">
+                    <!-- Similar structure as Day 1 -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Frequently Asked Questions</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ Item -->
+                <div x-data="{ open: false }" class="border dark:border-gray-700 rounded-lg">
+                    <button
+                        @click="open = !open"
+                        class="flex justify-between items-center w-full p-4 text-left">
+                        <span class="text-lg font-medium text-gray-800 dark:text-white">How can I register for the conference?</span>
+                        <svg
+                            :class="{'rotate-180': open}"
+                            class="w-5 h-5 transform transition-transform duration-300"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div
+                        x-show="open"
+                        x-transition:enter="transition-opacity duration-300"
+                        x-transition:enter-start="opacity-0"
+                        x-transition:enter-end="opacity-100"
+                        class="p-4 pt-0 text-gray-600 dark:text-gray-300">
+                        You can register through our online registration system. Click the "Register Now" button at the top of the page and follow the instructions.
+                    </div>
+                </div>
+                <!-- Add more FAQ items -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+        <!-- Conference Details -->
+        <section id="details" class="bg-white rounded-2xl shadow-xl p-8 mb-12 transform hover:scale-[1.01] transition-transform duration-300">
+            <h2 class="text-3xl font-bold mb-8 text-blue-900 border-b pb-4">Conference Details</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-gray-800">Duration</p>
+                            <p class="text-gray-600">2 Days of Intensive Learning</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-gray-800">Location</p>
+                            <p class="text-gray-600">University of Al-Ain, Iraq + Online</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-gray-800">Target Audience</p>
+                            <p class="text-gray-600">Researchers & Industry Professionals</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-gray-800">Publication</p>
+                            <p class="text-gray-600">Scopus-indexed journal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Continue with other sections using similar styling... -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white mt-16 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p class="text-blue-100">conference@uofaa.edu.iq</p>
+                    <p class="text-blue-100">+964 XXX XXX XXXX</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-100 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="#details" class="text-blue-100 hover:text-white transition-colors duration-300">Details</a></li>
+                        <li><a href="#registration" class="text-blue-100 hover:text-white transition-colors duration-300">Registration</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-100 hover:text-white transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" class="text-blue-100 hover:text-white transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                        </a>
+                        <a href="#" class="text-blue-100 hover:text-white transition-colors duration-300">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8 pt-8 border-t border-blue-400">
+                <p class="text-blue-100">© 2024 ICSEA2025 - First International Conference on Sustainable Engineering and Computer Science Applications. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white rounded-full p-3 hidden shadow-lg hover:bg-blue-700 transition-all duration-300">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <script>
+        // Countdown functionality
+        function countdown() {
+            return {
+                days: '00',
+                hours: '00',
+                minutes: '00',
+                seconds: '00',
+                init() {
+                    // Set your conference date here
+                    const conferenceDate = new Date('2024-12-31T00:00:00').getTime();
+
+                    setInterval(() => {
+                        const now = new Date().getTime();
+                        const distance = conferenceDate - now;
+
+                        this.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        // Add leading zeros
+                        this.days = this.days < 10 ? '0' + this.days : this.days;
+                        this.hours = this.hours < 10 ? '0' + this.hours : this.hours;
+                        this.minutes = this.minutes < 10 ? '0' + this.minutes : this.minutes;
+                        this.seconds = this.seconds < 10 ? '0' + this.seconds : this.seconds;
+                    }, 1000);
+                }
+            }
+        }
+
+        // Back to Top functionality
+        const backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        });
+    </script>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-blue-600 dark:bg-blue-800">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Stay Updated</h2>
+                <p class="text-blue-100 mb-8">Subscribe to our newsletter for conference updates and announcements.</p>
+                <form class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <input
+                        type="email"
+                        placeholder="Enter your email"
+                        class="px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-gray-800 dark:text-white"
+                        required>
+                    <button
+                        type="submit"
+                        class="px-8 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-colors duration-300">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Widget -->
+    <div
+        x-data="{ open: false }"
+        class="fixed bottom-8 right-8 z-50">
+        <!-- Chat Button -->
+        <button
+            @click="open = !open"
+            class="bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-colors duration-300">
+            <svg
+                x-show="!open"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            <svg
+                x-show="open"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <!-- Chat Window -->
+        <div
+            x-show="open"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform translate-y-2"
+            x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 transform translate-y-0"
+            x-transition:leave-end="opacity-0 transform translate-y-2"
+            class="absolute bottom-20 right-0 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl">
+            <div class="p-4 border-b dark:border-gray-700">
+                <h3 class="text-lg font-bold text-gray-800 dark:text-white">Conference Support</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-300">We typically reply within a few minutes.</p>
+            </div>
+            <div class="h-96 p-4 overflow-y-auto">
+                <!-- Chat messages will go here -->
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="bg-blue-600 text-white rounded-lg py-2 px-4 max-w-xs">
+                            Hello! How can we help you today?
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t dark:border-gray-700">
+                <form class="flex gap-2">
+                    <input
+                        type="text"
+                        placeholder="Type your message..."
+                        class="flex-1 px-4 py-2 rounded-full border dark:border-gray-700 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <button
+                        type="submit"
+                        class="bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('schedule', {
+                days: {
+                    day1: [
+                        {
+                            time: '09:00 AM',
+                            duration: '1 hour',
+                            title: 'Opening Ceremony',
+                            description: 'Welcome address and introduction to the conference themes.',
+                            location: 'Main Auditorium'
+                        },
+                        // Add more schedule items
+                    ],
+                    day2: [
+                        // Add day 2 schedule items
+                    ]
+                }
+            })
+        })
+    </script>
+</body>
+</html>

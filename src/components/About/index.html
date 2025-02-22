@@ -1,0 +1,36 @@
+<section class="relative py-20 overflow-hidden bg-white dark:bg-gray-800">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10 dark:opacity-20">
+        <div class="absolute inset-0 bg-[url('/assets/images/circuit-board.svg')] bg-repeat"></div>
+    </div>
+    
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-32 h-32 transform -translate-x-1/2 -translate-y-1/2 animate-[spin_20s_linear_infinite]">
+        <div class="w-full h-full bg-blue-500 rounded-full opacity-20 animate-pulse"></div>
+    </div>
+    <div class="absolute bottom-0 right-0 w-48 h-48 transform translate-x-1/2 translate-y-1/2 animate-[spin_30s_linear_infinite]">
+        <div class="w-full h-full bg-blue-400 rounded-full opacity-10 animate-pulse"></div>
+    </div>
+
+    <div class="container relative px-4 mx-auto">
+        <div class="max-w-4xl mx-auto">
+            <div class="p-10 text-center border border-gray-100 shadow-xl bg-linear-to-br from-blue-50 via-white to-gray-50 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 rounded-3xl dark:border-gray-700 animate-[fadeIn_1s_ease-in]">
+                <div class="relative">
+                    <!-- Decorative line above title -->
+                    <div class="absolute top-0 w-24 h-1 -translate-x-1/2 -translate-y-6 left-1/2 bg-linear-to-r from-transparent via-blue-500 to-transparent animate-[pulse_2s_infinite]"></div>
+                    
+                    <h2 class="mb-8 text-4xl font-bold text-blue-900 dark:text-blue-300 animate-[slideInDown_0.5s_ease-out]" 
+                        x-text="about[currentLang].title">
+                    </h2>
+                    
+                    <template x-for="(paragraph, index) in about[currentLang].paragraphs" :key="index">
+                        <p class="mb-6 text-lg leading-relaxed text-gray-700 transition-all duration-300 dark:text-gray-300 last:mb-0 hover:text-gray-900 dark:hover:text-gray-100 animate-[fadeInUp_0.5s_ease-out]" 
+                           x-text="paragraph"
+                           :style="`animation-delay: ${index * 0.2}s`">
+                        </p>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

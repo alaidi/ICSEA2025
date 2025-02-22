@@ -1,0 +1,30 @@
+{
+  "name": "conference",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node copy-components.mjs",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.8",
+    "fs-extra": "^11.2.0",
+    "postcss": "^8.x.x",
+    "tailwindcss": "^4.0.8",
+    "vite": "^4.x.x"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.9",
+    "alpinejs": "^3.14.3",
+    "gh-pages": "^6.2.0",
+    "tailwindcss-rtl": "^0.9.0"
+  },
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

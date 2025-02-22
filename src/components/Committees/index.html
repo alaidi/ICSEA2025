@@ -1,0 +1,49 @@
+<section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container px-4 mx-auto">
+        <h2 class="mb-12 text-3xl font-bold text-center text-gray-800 dark:text-gray-300" 
+            x-text="currentLang === 'ar' ? 'لجان المؤتمر' : 'Conference Committees'">
+        </h2>
+        
+        <div class="space-y-12" :dir="currentLang === 'ar' ? 'rtl' : 'ltr'">
+            <template x-for="committee in committees" :key="committee.id">
+                <div class="p-6 rounded-lg bg-gray-50 dark:bg-gray-800">
+                    <h3 class="mb-6 text-2xl font-bold text-gray-800 dark:text-gray-300" 
+                        x-text="committee[currentLang].title">
+                    </h3>
+                    
+                    <!-- Members -->
+                    <div class="mb-6">
+                        <h4 class="mb-3 text-lg font-semibold text-gray-700 dark:text-gray-400"
+                            x-text="currentLang === 'ar' ? 'الأعضاء' : 'Members'">
+                        </h4>
+                        <ul class="space-y-2 list-disc list-inside">
+                            <template x-for="(member, index) in committee[currentLang].members" :key="index">
+                                <li class="text-gray-600 dark:text-gray-300" x-text="member"></li>
+                            </template>
+                        </ul>
+                    </div>
+                    
+                    <!-- Responsibilities -->
+                    <div class="mb-6">
+                        <h4 class="mb-3 text-lg font-semibold text-gray-700 dark:text-gray-400"
+                            x-text="currentLang === 'ar' ? 'المسؤوليات' : 'Responsibilities'">
+                        </h4>
+                        <ul class="space-y-2 list-disc list-inside">
+                            <template x-for="(resp, index) in committee[currentLang].responsibilities" :key="index">
+                                <li class="text-gray-600 dark:text-gray-300" x-text="resp"></li>
+                            </template>
+                        </ul>
+                    </div>
+                    
+                    <!-- Structure -->
+                    <div>
+                        <h4 class="mb-3 text-lg font-semibold text-gray-700 dark:text-gray-400"
+                            x-text="currentLang === 'ar' ? 'الهيكل' : 'Structure'">
+                        </h4>
+                        <p class="text-gray-600 dark:text-gray-300" x-text="committee[currentLang].structure"></p>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</section> 

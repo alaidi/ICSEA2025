@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICSEA2025 | First International Conference on Sustainable Engineering and Computer Science Applications</title>
+    <meta name="title" content="ICSEA2025 | First International Conference on Sustainable Engineering and Computer Science Applications">
+    <meta name="description"
+        content="Join the First International Conference on Sustainable Engineering and Computer Science Applications. Explore innovative solutions, network with experts, and discover the future of sustainable engineering.">
+    <meta name="keywords"
+        content="ICSEA2025, sustainable engineering, computer science, international conference, engineering applications, sustainability">
+    <meta name="author" content="ICSEA2025">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://icsea2025.alayen.edu.iq/">
+    <meta property="og:title" content="ICSEA2025 | First International Conference on Sustainable Engineering and Computer Science Applications">
+    <meta property="og:description"
+        content="The conference highlights the latest innovations in sustainable engineering and computer science applications...">
+    <meta property="og:image" content="https://icsea2025.alayen.edu.iq/images/alayen.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://icsea2025.alayen.edu.iq/">
+    <meta property="twitter:title" content="ICSEA2025 | First International Conference on Sustainable Engineering and Computer Science Applications">
+    <meta property="twitter:description"
+        content="The conference highlights the latest innovations in sustainable engineering and computer science applications...">
+
+    <link rel="icon" type="image/svg+xml" href="/icon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/icon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://icsea2025.alayen.edu.iq/">
+
+    <!-- Additional Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="generator" content="Vite">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900"> <!-- Navigation -->
+    <header x-data="initHeader()">
+
+        <nav :class="{ 'shadow-md': isScrolled }"
+            class="fixed z-50 w-full transition-all duration-300 border-b border-gray-100 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md dark:border-gray-800">
+            <div class="container px-4 mx-auto">
+                <div class="flex items-center justify-between h-20" :class="currentLang === 'ar' ? '' : ''">
+                    <!-- Logo and Title -->
+                    <div class="flex items-center gap-3" :class="currentLang === 'ar' ? '' : ''">
+                        <img src="/public/assets/icons/logo.svg" alt="AI-PE Conference Logo"
+                            class="object-contain w-12 h-12">
+                        <div class="font-bold text-blue-900 dark:text-gray-300"
+                            :class="currentLang === 'ar' ? 'text-right' : 'text-left'">
+                            <a href="/">
+                            <div x-show="currentLang === 'ar'" class="flex flex-col">
+                                <span class="block truncate">
+                                    ICSEA2025
+                                </span>
+                            </div>
+                            <div x-show="currentLang === 'en'" class="flex flex-col">
+                                <span class="block truncate">
+                                    ICSEA2025
+                                </span>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Menu -->
+                    <div class="items-center hidden space-x-6 md:flex "
+                        :class="currentLang === 'ar' ? 'space-x-reverse' : ''">
+                        <!-- Navigation Links -->
+                        <div class="flex items-center space-x-6 "
+                            :class="currentLang === 'ar' ? 'space-x-reverse' : ''">
+                            <a href="#" class="nav-link">
+                                <span x-text="currentLang === 'ar' ? 'الرئيسية' : 'Home'"></span>
+                            </a>
+                            <a href="#details" class="nav-link">
+                                <span x-text="currentLang === 'ar' ? 'تفاصيل' : 'Details'"></span>
+                            </a>
+                            <a href="#topics" class="nav-link">
+                                <span x-text="currentLang === 'ar' ? 'مواضيع' : 'Topics'"></span>
+                            </a>
+                            <a href="/committees.html" class="nav-link">
+                                <span x-text="currentLang === 'ar' ? 'اللجان' : 'Committees'"></span>
+                            </a>
+                            <a href="#workshops" class="nav-link">
+                                <span x-text="currentLang === 'ar' ? 'الورشات' : 'Workshops'"></span>
+                            </a>
+                            <a href="#schedule" class="nav-link">
+                                <span x-text="currentLang === 'ar' ? 'الجدول' : 'Schedule'"></span>
+                            </a>
+                            <a href="#publications" class="nav-link">
+                                <span x-text="currentLang === 'ar' ? 'النشرات' : 'Publications'"></span>
+                            </a>
+                            <!-- Schedule -->
+                            <a href="#registration"
+                                class="px-4 py-2 text-white transition-colors duration-300 bg-blue-600 rounded-full hover:bg-blue-700">
+                                <span x-text="currentLang === 'ar' ? 'سجل الآن' : 'Register Now'"></span>
+                            </a>
+                        </div>
+
+                        <!-- Controls Group -->
+                        <div class="flex items-center space-x-4"
+                            :class="currentLang === 'ar' ? 'flex-row-reverse space-x-reverse' : ''">
+                            <!-- Theme Toggle -->
+                            <button @click="toggleTheme"
+                                class="p-2 transition-colors duration-300 rounded-full nav-link hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <svg x-show="isDark" class="w-6 h-6" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                                <svg x-show="!isDark" class="w-6 h-6" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                </svg>
+                            </button>
+
+                            <!-- Language Switcher -->
+                            <div class="relative">
+                                <button @click="toggleLanguage"
+                                    class="flex items-center p-2 rounded-full nav-link hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <span x-text="(currentLang === 'ar' ? 'EN' : 'AR')"
+                                        class="mx-1 text-sm font-medium"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button @click="toggleMenu" class="p-2 text-gray-700 rounded-md md:hidden dark:text-gray-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path x-show="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div x-show="isOpen" x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 transform -translate-y-2"
+                x-transition:enter-end="opacity-100 transform translate-y-0"
+                x-transition:leave="transition ease-in duration-150"
+                x-transition:leave-start="opacity-100 transform translate-y-0"
+                x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden">
+                <div class="px-4 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-900"
+                    :class="currentLang === 'ar' ? 'text-right' : 'text-left'">
+                    <!-- Mobile Navigation Links -->
+                    <a href="#" x-text="currentLang === 'ar' ? 'الرئيسية' : 'Home'"
+                        class="block px-3 py-2 text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+                    <a href="#details" x-text="currentLang === 'ar' ? 'تفاصيل' : 'Details'"
+                        class="block px-3 py-2 text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Details</a>
+                    <a href="#topics" x-text="currentLang === 'ar' ? 'مواضيع' : 'Topics'"
+                        class="block px-3 py-2 text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Topics</a>
+                    <a href="/committees.html" x-text="currentLang === 'ar' ? 'اللجان' : 'Committees'"
+                        class="block px-3 py-2 text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Committees</a>
+                    <a href="#workshops" x-text="currentLang === 'ar' ? 'الورشات' : 'Workshops'"
+                        class="block px-3 py-2 text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Workshops</a>
+                    <a href="#publications" x-text="currentLang === 'ar' ? 'النشرات' : 'Publications'"
+                        class="block px-3 py-2 text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Publications</a>
+                    <a href="#schedule" x-text="currentLang === 'ar' ? 'الجدول' : 'Schedule'"
+                        class="block px-3 py-2 text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">Schedule</a>
+                        <a href="#registration" class="block px-3 py-2 font-medium text-blue-600 dark:text-blue-400"
+                        x-text="currentLang === 'ar' ? 'سجل الآن' : 'Register Now'">Register Now</a>
+
+                    <!-- Mobile Theme and Language Controls -->
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <button @click="toggleTheme"
+                            class="p-2 transition-colors duration-300 rounded-full nav-link hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <svg x-show="isDark" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                            <svg x-show="!isDark" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
+                        </button>
+                        <div class="flex space-x-2">
+                            <button @click="toggleLanguage()"
+                                class="flex items-center p-2 rounded-full nav-link hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span x-text="(currentLang === 'ar' ? 'EN' : 'AR')"
+                                    class="mx-1 text-sm font-medium"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-linear-to-br from-blue-600 to-blue-800 animate-[fadeIn_1s_ease-in]" id="hero"
+        x-data="initHero()">
+        <div class="container px-4 mx-auto">
+            <div class="max-w-3xl mx-auto text-center text-white" :dir="currentLang === 'ar' ? 'rtl' : 'ltr'">
+                <h1 class="mb-6 text-2xl font-bold md:text-4xl animate-[slideInDown_0.5s_ease-out]">
+                    <span x-show="currentLang === 'ar'">
+                        المؤتمر العلمي الأول لكلية هندسة البترول - جامعة العين العراقية (SCPEC-2025)
+                    </span>
+                    <span x-show="currentLang === 'en'">
+                        The First Scientific Conference of the College of Petroleum Engineering - AUIQ (SCPEC-2025)
+                    </span>
+                </h1>
+                <p class="mb-8 text-xl text-blue-100 md:text-2xl animate-[fadeInUp_0.7s_ease-out]">
+                    <span x-show="currentLang === 'ar'">
+                        تطوير هندسة البترول من خلال الذكاء الاصطناعي
+                    </span>
+                    <span x-show="currentLang === 'en'">
+                        AI-Driven Innovations in Petroleum Engineering: Pioneering the Future of Energy
+                    </span>
+                </p>
+
+                <div class="flex flex-col justify-center gap-4 sm:flex-row animate-[fadeInUp_0.9s_ease-out]"
+                    :class="currentLang === 'ar' ? 'sm:flex-row-reverse' : ''">
+                    <a href="#register" class="transition-transform duration-300 btn-primary btn-white hover:scale-105">
+                        <span x-show="currentLang === 'ar'" class="mx-auto">سجل الآن</span>
+                        <span x-show="currentLang === 'en'" class="mx-auto">Register Now</span>
+                    </a>
+                    <a href="#schedule"
+                        class="transition-transform duration-300 btn-primary btn-outline hover:scale-105">
+                        <span x-show="currentLang === 'ar'" class="mx-auto">عرض الجدول</span>
+                        <span x-show="currentLang === 'en'" class="mx-auto">View Schedule</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <section x-data="initCountdown()" class="py-12 bg-gray-200 dark:bg-gray-900"
+        :dir="currentLang === 'ar' ? 'rtl' : 'ltr'">
+        <div class="container px-4 mx-auto">
+            <div class="grid max-w-4xl grid-cols-2 gap-6 mx-auto text-center md:grid-cols-4"
+                :class="currentLang === 'ar' ? 'md:flex-row-reverse' : ''">
+                <!-- Days -->
+                <div class="p-6 rounded-lg bg-gray-50 dark:bg-gray-700">
+                    <span x-text="days" class="block text-3xl font-bold text-blue-600 dark:text-blue-400"></span>
+                    <span class="text-gray-600 dark:text-gray-300"
+                        x-text="currentLang === 'ar' ? 'يوم' : 'Days'"></span>
+                </div>
+                <!-- Hours -->
+                <div class="p-6 rounded-lg bg-gray-50 dark:bg-gray-700">
+                    <span x-text="hours" class="block text-3xl font-bold text-blue-600 dark:text-blue-400"></span>
+                    <span class="text-gray-600 dark:text-gray-300"
+                        x-text="currentLang === 'ar' ? 'ساعة' : 'Hours'"></span>
+                </div>
+                <!-- Minutes -->
+                <div class="p-6 rounded-lg bg-gray-50 dark:bg-gray-700">
+                    <span x-text="minutes" class="block text-3xl font-bold text-blue-600 dark:text-blue-400"></span>
+                    <span class="text-gray-600 dark:text-gray-300"
+                        x-text="currentLang === 'ar' ? 'دقيقة' : 'Minutes'"></span>
+                </div>
+                <!-- Seconds -->
+                <div class="p-6 rounded-lg bg-gray-50 dark:bg-gray-700">
+                    <span x-text="seconds" class="block text-3xl font-bold text-blue-600 dark:text-blue-400"></span>
+                    <span class="text-gray-600 dark:text-gray-300"
+                        x-text="currentLang === 'ar' ? 'ثانية' : 'Seconds'"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Conference Section -->
+    <div x-data="about" x-init="init()" x-html="content"></div>
+
+
+    <!-- Schedule Section -->
+
+    <!-- Topics Section -->
+    <section id="topics" x-data="initTopics"
+        class="relative py-24 overflow-hidden bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+        <!-- Decorative Elements -->
+        <div
+            class="absolute top-0 left-0 w-64 h-64 -translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-full opacity-20 blur-3xl">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 bg-indigo-500 rounded-full w-96 h-96 opacity-10 blur-3xl">
+        </div>
+
+        <div class="container relative px-4 mx-auto" :dir="currentLang === 'ar' ? 'rtl' : 'ltr'">
+            <!-- Section Header -->
+            <div class="max-w-3xl mx-auto mb-20 text-center">
+                <h2 class="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
+                    x-text="currentLang === 'ar' ? 'محاور المؤتمر' : 'Conference Topics'"></h2>
+                <div class="w-24 h-1 mx-auto rounded-full bg-linear-to-r from-blue-500 to-indigo-500"></div>
+            </div>
+
+            <!-- Topics Grid -->
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <template x-for="topic in topics" :key="topic.id">
+                    <div class="h-full group">
+                        <div
+                            class="relative flex flex-col h-full p-8 transition-all duration-300 bg-white border border-gray-100 rounded-xl dark:bg-gray-800 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1">
+                            <!-- Icon and Title -->
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="flex items-center justify-center w-12 h-12 text-blue-600 transition-colors bg-blue-100 rounded-lg dark:bg-blue-900/50 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            :d="topic.icon"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100"
+                                    x-text="topic[currentLang].title"></h3>
+                            </div>
+
+                            <!-- Items List -->
+                            <ul class="grow space-y-3">
+                                <template x-for="(item, index) in topic[currentLang].items" :key="index">
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 mt-0.5 text-blue-500 shrink-0" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span class="text-gray-600 dark:text-gray-400" x-text="item"></span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+    <!-- Speakers Section -->
+    <!-- Speakers Component -->
+    <section x-data="initSpeakers()" id="speakers" class="bg-gray-one section-padding">
+        <div class="container px-4 py-16 mx-auto">
+            <h2 class="mb-12 text-3xl font-bold text-center dark:text-gray-300"
+                x-text="$store.app.currentLang === 'ar' ? 'المتحدثون' : 'Speakers'"></h2>
+
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <template x-for="speaker in speakers" :key="speaker.id">
+                    <div class="overflow-hidden transition-transform duration-300 transform bg-white rounded-lg shadow-lg cursor-pointer dark:bg-gray-800 hover:scale-105"
+                        @click="showSpeakerDetails(speaker)">
+                        <img :src="speaker.image" :alt="speaker.name" class="object-cover w-full h-64"
+                            :class="{ 'opacity-0': !speaker.imageLoaded }">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-xl font-bold dark:text-gray-300" x-text="speaker.name"></h3>
+                            <p class="text-gray-600 dark:text-gray-400" x-text="speaker.role"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Speaker Modal -->
+            <div x-show="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+                @click.self="closeModal" x-transition>
+                <div class="w-full max-w-2xl p-8 mx-4 bg-white rounded-lg dark:bg-gray-800">
+                    <template x-if="selectedSpeaker">
+                        <div>
+                            <div class="flex items-start justify-between mb-6">
+                                <h3 class="text-2xl font-bold dark:text-gray-300" x-text="selectedSpeaker.name">
+                                </h3>
+                                <button @click="closeModal" class="text-gray-500 hover:text-gray-700">
+                                    <span class="sr-only">Close</span>
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="w-full h-auto mb-6">
+                                <img :src="selectedSpeaker.image" :alt="selectedSpeaker.name"
+                                    class="object-contain w-full rounded-lg">
+                            </div>
+                            <p class="mb-4 text-gray-600 dark:text-gray-400" x-text="selectedSpeaker.role"></p>
+                            <p class="mb-6 text-gray-700 dark:text-gray-300" x-text="selectedSpeaker.bio"></p>
+                            <div class="flex space-x-4">
+                                <a :href="selectedSpeaker.social.url" target="_blank"
+                                    class="text-blue-500 hover:text-blue-600">
+                                    Read More
+                                </a>
+
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="objectives" x-data="objectives" x-init="init()"
+        class="relative py-20 overflow-hidden bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 opacity-10">
+            <div class="w-full h-full bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 opacity-10">
+            <div class="w-full h-full bg-indigo-500 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+
+        <div class="container relative px-4 mx-auto">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="mb-16 text-4xl font-bold text-center text-transparent text-gray-800 dark:text-white bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400"
+                    x-text="currentLang === 'ar' ? 'أهداف المؤتمر' : 'Conference Objectives'">
+                </h2>
+
+                <div class="grid gap-8 md:grid-cols-2" :dir="currentLang === 'ar' ? 'rtl' : 'ltr'">
+                    <template x-for="objective in objectives" :key="objective.id">
+                        <div class="transition-all duration-300 transform hover:scale-105">
+                            <div
+                                class="p-8 bg-white border border-gray-100 shadow-lg dark:bg-gray-800 rounded-2xl hover:shadow-xl dark:border-gray-700">
+                                <div class="flex items-start gap-6">
+                                    <span
+                                        class="flex items-center justify-center w-12 h-12 text-xl font-bold text-blue-600 bg-blue-100 rounded-xl dark:bg-blue-900/50 dark:text-blue-300"
+                                        x-text="objective.id">
+                                    </span>
+                                    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+                                        x-text="currentLang === 'ar' ? objective.ar : objective.en">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <!-- FAQ Component -->
+    <section id="faq" x-data="initFAQ()" class="py-16 bg-gray-one">
+        <div class="container px-4 py-16 mx-auto" :dir="currentLang === 'ar' ? 'rtl' : 'ltr'">
+            <h2 class="mb-12 text-3xl font-bold text-center dark:text-gray-300"
+                x-text="currentLang === 'ar' ? 'الأسئلة الشائعة' : 'Frequently Asked Questions'"></h2>
+
+            <!-- Search and Filter -->
+            <div class="mx-auto mb-8 ">
+                <div class="flex flex-col gap-4 md:flex-row"
+                    :class="currentLang === 'ar' ? 'md:flex-row-reverse' : 'md:flex-row'">
+                    <input type="text" x-model="searchQuery"
+                        :placeholder="currentLang === 'ar' ? 'ابحث في الأسئلة الشائعة...' : 'Search FAQs...'"
+                        class="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                        :class="currentLang === 'ar' ? 'text-right' : 'text-left'">
+
+                    <select x-model="selectedCategory"
+                        class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
+                        :class="currentLang === 'ar' ? 'text-right' : 'text-left'">
+                        <option value="all" x-text="currentLang === 'ar' ? 'جميع الفئات' : 'All Categories'">
+                        </option>
+                        <template x-for="category in categories" :key="category">
+                            <option :value="category" x-text="category"></option>
+                        </template>
+                    </select>
+                </div>
+            </div>
+
+            <!-- FAQ List -->
+            <div class="mx-auto space-y-4 ">
+                <template x-for="faq in filteredFAQs" :key="faq.id">
+                    <div class="border border-gray-200 rounded-lg dark:border-gray-700">
+                        <button @click="toggleFAQ(faq.id)"
+                            class="flex items-center justify-between w-full px-6 py-4 text-left hover:bg-gray-50 dark:hover:bg-gray-800"
+                            :class="{
+                            'bg-gray-50 dark:bg-gray-800': faq.isOpen,
+                            'text-right ': currentLang === 'ar',
+                            'text-left ': currentLang === 'en'
+                        }">
+                            <span class="text-lg font-medium dark:text-gray-300"
+                                x-text="faq.question[currentLang]"></span>
+                            <svg class="w-6 h-6 transition-transform duration-200 transform" :class="{
+                                'rotate-180': faq.isOpen,
+                                'rotate-0 rtl:-rotate-180': currentLang === 'ar' && !faq.isOpen,
+                                'rtl:rotate-0': currentLang === 'ar' && faq.isOpen
+                            }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div x-show="faq.isOpen" x-transition:enter="transition-all duration-200"
+                            x-transition:leave="transition-all duration-200"
+                            class="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
+                            <p class="mb-4 text-gray-600 dark:text-gray-400"
+                                :class="currentLang === 'ar' ? 'text-right' : 'text-left'"
+                                x-text="faq.answer[currentLang]"></p>
+
+                            <!-- Feedback Section -->
+                            <!-- <div class="flex items-center mt-4"
+                                    :class="currentLang === 'ar' ? ' space-x-reverse' : 'flex-row space-x-4'">
+                                    <span class="text-sm text-gray-500"
+                                        x-text="currentLang === 'ar' ? 'هل كان هذا مفيد؟' : 'Was this helpful?'"></span>
+                                    <div class="flex items-center"
+                                        :class="currentLang === 'ar' ? ' space-x-reverse space-x-4' : 'space-x-4'">
+                                        <button @click="rateFAQ(faq.id, true)"
+                                            class="px-3 py-1 text-sm border rounded-full hover:bg-green-50 dark:hover:bg-green-900">
+                                            👍 <span x-text="faq.helpful"></span>
+                                        </button>
+                                        <button @click="rateFAQ(faq.id, false)"
+                                            class="px-3 py-1 text-sm border rounded-full hover:bg-red-50 dark:hover:bg-red-900">
+                                            👎 <span x-text="faq.notHelpful"></span>
+                                        </button>
+                                    </div>
+                                </div> -->
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <!--div x-data="initNewsletter()">
+        <div x-html="content"></div>
+    </div-->
+    <!-- Selected Articles Publication Section -->
+
+
+    <!-- Chat Widget -->
+    <!--  div x-data="initChat()">
+    </div-->
+
+
+    <!-- Workshops Section -->
+    <section id="workshops" class="py-16 bg-gray-two" x-data="initWorkshops()">
+        <div class="container px-4 mx-auto">
+            <h2 class="mb-12 text-3xl font-bold text-center text-gray-800 dark:text-gray-300"
+                x-text="currentLang === 'ar' ? 'ورش التدريب المسبق للمؤتمر' : 'Pre-Conference Workshops'"></h2>
+            <div class="grid gap-8 md:grid-cols-2">
+                <template x-for="workshop in workshops" :key="workshop.id">
+                    <div class="overflow-hidden bg-white shadow-lg dark:bg-gray-800 rounded-xl">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-300"
+                                    x-text="workshop[currentLang].title">
+                                    >Machine Learning Basics</h3>
+                                <span class="px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full"
+                                    x-text="workshop[currentLang].level">
+                                    >Beginner</span>
+                            </div>
+                            <p class="mb-4 text-gray-600 dark:text-gray-300" x-text="workshop[currentLang].description">
+                                their applications in petroleum engineering.</p>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span x-text="workshop[currentLang].duration"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </template>
+                <!-- Workshop Card 1 -->
+
+            </div>
+        </div>
+    </section>
+    <!-- Schedule Component -->
+    <section id="schedule" x-data="initSchedule()" class="py-16 bg-gray-one"
+        :dir="currentLang === 'ar' ? 'rtl' : 'ltr'">
+        <div class="container mx-auto">
+            <h2 class="mb-8 text-3xl font-bold text-center text-gray-900 dark:text-gray-300"
+                x-text="currentLang === 'ar' ? 'جدول المؤتمر' : 'Conference Schedule'"></h2>
+
+            <!-- Day Selector -->
+            <div class="flex justify-center mt-8 mb-12 space-x-4">
+                <button @click="activeDay = 'dayOne'"
+                    :class="{'bg-blue-600 text-white': activeDay === 'dayOne', 'bg-gray-200 text-gray-700': activeDay !== 'dayOne'}"
+                    class="px-6 py-2 transition-colors rounded-lg">
+                    <span x-text="currentLang === 'ar' ? 'اليوم الأول' : 'Day One'"></span>
+                </button>
+                <button @click="activeDay = 'dayTwo'"
+                    :class="{'bg-blue-600 text-white': activeDay === 'dayTwo', 'bg-gray-200 text-gray-700': activeDay !== 'dayTwo'}"
+                    class="px-6 py-2 transition-colors rounded-lg">
+                    <span x-text="currentLang === 'ar' ? 'اليوم الثاني' : 'Day Two'"></span>
+                </button>
+            </div>
+
+            <!-- Schedule Timeline -->
+            <div class="max-w-4xl mx-auto space-y-8">
+                <template x-for="(session, key) in schedule[currentLang][activeDay]" :key="key">
+                    <div class="p-6 bg-white rounded-lg shadow-md dark:bg-gray-700">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-lg font-bold text-blue-600 dark:text-blue-400"
+                                x-text="session.time"></span>
+                        </div>
+
+                        <template x-if="session.items">
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <template x-for="(item, index) in session.items" :key="index">
+                                    <li class="flex items-start gap-2">
+                                        <span class="mt-1 text-blue-600">•</span>
+                                        <span x-text="item"></span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </template>
+
+                        <template x-if="session.speakers">
+                            <div class="space-y-4">
+                                <template x-for="(speaker, index) in session.speakers" :key="index">
+                                    <div class="mt-2">
+                                        <h4 class="font-semibold text-gray-800 dark:text-gray-200"
+                                            x-text="speaker.name"></h4>
+                                        <p class="mt-1 text-gray-600 dark:text-gray-300" x-text="speaker.topic"></p>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+
+                        <template x-if="session.theme">
+                            <div class="mt-2">
+                                <h4 class="font-semibold text-gray-800 dark:text-gray-200" x-text="session.theme"></h4>
+                            </div>
+                        </template>
+
+                        <template x-if="session.title">
+                            <div class="mt-2">
+                                <h4 class="font-semibold text-gray-800 dark:text-gray-200" x-text="session.title"></h4>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+    <!-- Publications Section -->
+    <section id="publications" x-data="publications" x-init="init()" class="relative py-20 overflow-hidden bg-gray-two">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 opacity-10">
+            <div class="w-full h-full bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 opacity-10">
+            <div class="w-full h-full bg-indigo-500 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+
+        <div class="container relative px-4 mx-auto">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="mb-8 text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400"
+                    x-text="publications[currentLang].title">
+                </h2>
+
+                <div
+                    class="p-8 bg-white border border-gray-100 shadow-xl dark:bg-gray-800 dark:border-gray-700 rounded-2xl">
+                    <div class="flex flex-col items-center justify-center mb-8 md:flex-row md:gap-6">
+
+                        <p class="text-lg text-gray-700 dark:text-gray-300"
+                            x-text="publications[currentLang].description">
+                        </p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center mb-8 md:flex-row md:gap-6">
+                        <img :src="publications[currentLang].journal.logo" :alt="publications[currentLang].journal.name"
+                            class="object-contain h-16 mb-4 md:mb-0">
+                        <div class="text-center md:text-left">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-300"
+                                x-text="publications[currentLang].journal.name">
+                            </h3>
+                            <a :href="publications[currentLang].journal.url" target="_blank"
+                                class="text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                                <span x-text="publications[currentLang].journal.url"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 text-left" :dir="currentLang === 'ar' ? 'rtl' : 'ltr'">
+
+
+                        <ul class="space-y-3 text-gray-700 list-none dark:text-gray-300">
+                            <template x-for="(feature, index) in publications[currentLang].features" :key="index">
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 mt-1 text-blue-500 shrink-0" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                                        </path>
+                                    </svg>
+                                    <span x-text="feature"></span>
+                                </li>
+                            </template>
+                        </ul>
+
+                        <div class="pt-6 text-center">
+                            <a :href="publications[currentLang].button.url" target="_blank"
+                                class="inline-flex items-center px-6 py-3 text-white transition-all duration-300 bg-blue-600 rounded-full group hover:bg-blue-700">
+                                <span x-text="publications[currentLang].button.text"></span>
+                                <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="py-12 text-white bg-gray-900" x-data="initFooter()">
+        <div class="container px-4 mx-auto">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+                <!-- Contact Info -->
+                <div>
+                    <img src="/public/assets/images/aleyn_200.png" alt="Footer Logo" class="" />
+                </div>
+                <div>
+                    <h3 class="mb-4 text-xl font-bold" x-text="currentLang === 'ar' ? 'اتصل بنا' : 'Contact Us'">Contact
+                        Us</h3>
+                    <ul class="space-y-2">
+                        <li>Email: info@alayen.edu.iq</li>
+                        <li>Phone: +</li>
+                        <li
+                            x-text="currentLang === 'ar' ? 'العنوان: جامعة العين، العراق' : 'Address: University of Al-Ain, Iraq'">
+                            Address: University of Al-Ain, Iraq</li>
+                    </ul>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="mb-4 text-xl font-bold"
+                        x-text="currentLang === 'ar' ? 'الروابط السريعة' : 'Quick Links'">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400"
+                                x-text="currentLang === 'ar' ? 'الرئيسية' : 'Home'">Home</a></li>
+                        <li><a href="#speakers" class="hover:text-blue-400"
+                                x-text="currentLang === 'ar' ? 'المحاور' : 'Speakers'">Speakers</a></li>
+                        <li><a href="#schedule" class="hover:text-blue-400"
+                                x-text="currentLang === 'ar' ? 'الجدول' : 'Schedule'">Schedule</a></li>
+                        <li><a href="#faq" class="hover:text-blue-400"
+                                x-text="currentLang === 'ar' ? 'الأسئلة الشائعة' : 'FAQ'">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Social Media -->
+                <div>
+                    <h3 class="mb-4 text-xl font-bold" x-text="currentLang === 'ar' ? 'تابعنا' : 'Follow Us'">Follow Us
+                    </h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/universityofalayen" target="_blank"
+                            class="hover:text-blue-400">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/alayen_iraqi_university" target="_blank"
+                            class="hover:text-blue-400">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Newsletter -->
+                <!-- <div>
+                    <h3 class="mb-4 text-xl font-bold" x-text="currentLang === 'ar' ? 'النشرة البريدية' : 'Newsletter'">Newsletter</h3>
+                    <form class="space-y-4">
+                        <input type="email" placeholder="Enter your email"
+                            class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-sm">
+                        <button type="submit" class="w-full btn-primary">Subscribe</button>
+                    </form>
+                </div> -->
+            </div>
+            <div class="pt-8 mt-8 text-center border-t border-gray-800">
+                <p
+                    x-text="currentLang === 'ar' ? '&copy; 2025 مؤتمر الذكاء الاصطناعي في هندسة البترول' : '&copy; 2025 AI-PE Conference. All rights reserved.'">
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script type="module" src="/src/main.js"></script>
+
+
+</body>
+
+</html>

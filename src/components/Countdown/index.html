@@ -1,0 +1,29 @@
+<section x-data="initCountdown()" 
+         class="py-12 bg-white dark:bg-gray-800"
+         :dir="currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
+             :class="currentLang === 'ar' ? 'md:flex-row-reverse' : ''">
+            <!-- Days -->
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
+                <span x-text="days" class="block text-3xl font-bold text-blue-600 dark:text-blue-400"></span>
+                <span class="text-gray-600 dark:text-gray-300" x-text="currentLang === 'ar' ? 'أيام' : 'Days'"></span>
+            </div>
+            <!-- Hours -->
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
+                <span x-text="hours" class="block text-3xl font-bold text-blue-600 dark:text-blue-400"></span>
+                <span class="text-gray-600 dark:text-gray-300" x-text="currentLang === 'ar' ? 'ساعات' : 'Hours'"></span>
+            </div>
+            <!-- Minutes -->
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
+                <span x-text="minutes" class="block text-3xl font-bold text-blue-600 dark:text-blue-400"></span>
+                <span class="text-gray-600 dark:text-gray-300" x-text="currentLang === 'ar' ? 'دقائق' : 'Minutes'"></span>
+            </div>
+            <!-- Seconds -->
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
+                <span x-text="seconds" class="block text-3xl font-bold text-blue-600 dark:text-blue-400"></span>
+                <span class="text-gray-600 dark:text-gray-300" x-text="currentLang === 'ar' ? 'ثواني' : 'Seconds'"></span>
+            </div>
+        </div>
+    </div>
+</section>

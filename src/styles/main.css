@@ -1,0 +1,57 @@
+@import './buttons.css' layer(base);
+@import './components.css';
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-primary: #005033;
+  --color-primary-orange: #ff7f11;
+  --color-primary-silver: #d1d5db;
+
+  --font-heading: Rockwell, Source Sans Pro Black, sans-serif;
+  --font-body: Euphemia, Arial, sans-serif;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility direction-rtl {
+  direction: rtl;
+}
+
+@utility direction-ltr {
+  direction: ltr;
+}
+
+@layer base {
+    body {
+        font-family: var(--font-body);
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
+    }
+} 
+
+.bg-gray-one {
+    @apply bg-gray-50 dark:bg-gray-800;
+}
+
+.bg-gray-two {
+    @apply bg-gray-100 dark:bg-gray-700;
+}

@@ -1,0 +1,57 @@
+<!-- Schedule Component -->
+<section id="schedule" x-data="initSchedule()" class="section-padding bg-white dark:bg-gray-800">
+    <div class="container mx-auto">
+        <h2 class="section-title">Conference Schedule</h2>
+
+        <!-- Day Selector -->
+        <div class="flex justify-center space-x-4 mt-8 mb-12">
+            <button @click="switchDay('day1')" 
+                    :class="{'btn-primary': activeDay === 'day1', 'btn-secondary': activeDay !== 'day1'}">
+                Day 1
+            </button>
+            <button @click="switchDay('day2')" 
+                    :class="{'btn-primary': activeDay === 'day2', 'btn-secondary': activeDay !== 'day2'}">
+                Day 2
+            </button>
+        </div>
+
+        <!-- Schedule Timeline -->
+        <div class="max-w-4xl mx-auto">
+            <template x-for="event in getScheduleForActiveDay()" :key="event.time">
+                <div class="schedule-item">
+                    <div class="time-slot">
+                        <span class="text-lg font-bold text-blue-600 dark:text-blue-400" x-text="event.time"></span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400" x-text="event.duration"></span>
+                    </div>
+                    
+                    <div class="event-details">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white" x-text="event.title"></h3>
+                        <p class="text-gray-600 dark:text-gray-300 mt-2" x-text="event.description"></p>
+                        
+                        <div class="mt-3 flex items-center space-x-4">
+                            <div class="flex items-center text-gray-500 dark:text-gray-400">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <span x-text="event.location"></span>
+                            </div>
+                            
+                            <template x-if="event.speaker">
+                                <div class="flex items-center text-gray-500 dark:text-gray-400">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                    <span x-text="event.speaker"></span>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</section> 
